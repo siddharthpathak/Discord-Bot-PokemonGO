@@ -111,9 +111,7 @@ async def gym(ctx, *args):
         gym = "_".join(args).lower()
         await bot.say(" ".join(args) + ": " + config_json['gym_locations'][gym])
     except:
-        await bot.say("Usage: ?gym <location>. "
-                      "Currently data is only available for Innovation Center, Ruth Lily, and Disability Institute."
-                      )
+        await bot.say("Usage: ?gym <location>")
 
 with open('config.json') as f:
     config_json = json.load(f)
