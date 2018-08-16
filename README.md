@@ -17,10 +17,10 @@ type ?help to start using the bot, and get help on command.
 
 #### To-Do
 
-1. Make the bot understand user rraid eports better, so users can report the raids in a more natural way.
+1. Make the bot understand user raid eports better, so users can report the raids in a more natural way.
 
 2. Add Pokemon Counter command.
 
 3. Add raid RSVP command.
 
-4. Make bot send out new message at start of new day for signifying start of new day. 
+4. Make bot send out new message at start of new day for signifying reports of new tasks for the day. 
