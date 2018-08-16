@@ -1,0 +1,14 @@
+{
+	"discord": {
+		"token": "discord_token",
+		"etpo_id": "end-time-place-channel_id"
+	},
+
+	"gym_locattions":  {
+
+		"gym_name": "gym_address",
+		"gym_name": "gym_address",
+		"gym_name": "gym_address"
+	}
+
+}
