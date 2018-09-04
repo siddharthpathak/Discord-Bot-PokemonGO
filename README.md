@@ -17,7 +17,7 @@ type ?help to start using the bot, and get help on command.
 
 #### To-Do
 
-1. Make the bot understand user raid eports better, so users can report the raids in a more natural way.
+1. Make the bot understand user raid reports better, so users can report the raids in a more natural way.
 
 2. Add Pokemon Counter command.
 
