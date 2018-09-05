@@ -108,8 +108,8 @@ async def gym(ctx, *args):
         gym = "_".join(args).lower()
         await bot.say(" ".join(args) + ": " + config_json['gym_locations'][gym])
 
-    except ValueError:
-        await bot.say("".join(args) + " not found")
+    except KeyError:
+        await bot.say(" ".join(args) + " not found")
 
     except:
         await bot.say(gym.__doc__)
@@ -118,5 +118,3 @@ with open('config.json') as f:
     config_json = json.load(f)
 
 bot.run(config_json['discord']['token'])
-
-
