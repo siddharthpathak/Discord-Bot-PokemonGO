@@ -65,7 +65,7 @@ async def report(ctx, *args):
       Usage: ?report <egg_level> <location> <hatches/starts/pops> <time_left_to_start_in_mins>
       Usage: ?report <Pokemon> <location> <started/ends/popped/left/hatched> <time_left_in_mins>
       To report a raid about to start in 25 mins
-      ?report Kyogre Innovation Center ends 25
+      ?report Lugia Buckingham Fountain ends 25
     """
 
     try:
@@ -93,25 +93,26 @@ async def report(ctx, *args):
                                    + str(end_time.minute) + "(in " + report_time + ")")
 
     except:
-        # send out error
         await bot.add_reaction(ctx.message, "👎")
-        await bot.say("Usage: ?report <egg_level> <location> <hatches/starts/pops> <time left to start>" +
-                      "\nUsage: ?report <Pokemon> <location> <started/ends/popped/left/hatched> <time_left>" +
-                      "\n?report Registeel Innovation Center hatches 25")
+        await bot.say(report.__doc__)
 
 
 @bot.command(pass_context=True)
 async def gym(ctx, *args):
     """
     Replies with the gym's location.
-    Usage: ?gym <location>. Currently data is only for Innovation Center, Ruth Lily, and Disability Institute.
+    Usage: ?gym <location>.
 
     """
     try:
         gym = "_".join(args).lower()
         await bot.say(" ".join(args) + ": " + config_json['gym_locations'][gym])
+
+    except ValueError:
+        await bot.say("".join(args) + " not found")
+
     except:
-        await bot.say("Usage: ?gym <location>")
+        await bot.say(gym.__doc__)
 
 with open('config.json') as f:
     config_json = json.load(f)
