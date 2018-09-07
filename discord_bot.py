@@ -21,8 +21,8 @@ async def on_member_join(member):
 
     await bot.send_message(bot.get_channel(config_json['discord']['general_id']),
                            "Hello " + member.mention +
-                           ". Welcome to the test server for Pokemon Go bot. Once features are tried and tested " 
-                           "by some users we plan to move the bot to the main " 
+                           ". Welcome to the test server for Pokemon Go bot. Once features are tried and tested "
+                           "by some users we plan to move the bot to the main "
                            "server on feature by feature basis. To start "
                            "testing and get more info about commands type ?help."
                            )
@@ -46,11 +46,10 @@ async def role(ctx, *args):
     """
 
     if len(args) != 1:
-
         await bot.say("Wrong usage. Try ?help role for help")
 
+    else:
         role = discord.utils.get(ctx.message.author.server.roles, name=args[0])
-
         if role is not None:
             await bot.add_roles(ctx.message.author, role)
             await bot.say("Role added successfully")
@@ -64,8 +63,10 @@ async def report(ctx, *args):
       To report a raid.
       Usage: ?report <egg_level> <location> <hatches/starts/pops> <time_left_to_start_in_mins>
       Usage: ?report <Pokemon> <location> <started/ends/popped/left/hatched> <time_left_in_mins>
-      To report a raid about to start in 25 mins
-      ?report Lugia Buckingham Fountain ends 25
+      To report a raid about to end in 25 minutes:
+      ?report Lugia Buckingham Fountain ends/hatched/left 25
+      To report a raid about to start in 25 minutes:
+      ?report 5 Cupid's Span hatches/starts/pops 25
     """
 
     try:
@@ -83,8 +84,8 @@ async def report(ctx, *args):
                                    " ".join(args[1:-2]) + " - " + str(start_time.hour) + ":" + str(start_time.minute) +
                                    "-" + str(end_time.hour) + ":" + str(end_time.minute))
 
-        elif args[-2] in ["ends", "hatched", "started", "popped", "left"]:
-            # then it is time remaining
+        elif args[-2] in ["ends", "hatched", "left"]:
+            # else it is time remaining
             # Add the reported time to current time
             end_time = datetime.now() + timedelta(minutes=int(report_time))
             await bot.add_reaction(ctx.message, "👍")
@@ -113,6 +114,7 @@ async def gym(ctx, *args):
 
     except:
         await bot.say(gym.__doc__)
+
 
 with open('config.json') as f:
     config_json = json.load(f)
